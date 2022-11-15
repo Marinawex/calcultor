@@ -11,14 +11,16 @@ h1{
     padding: 50px;
 }
 
-
+body{
+    background-color: white;
+}
 
 .calculator{
     display: grid;
     grid-template-columns:1fr 4fr 1fr ;
     grid-template-rows: repeat(8, 1fr);
     margin: auto;
-    width: 60vw;
+    width: 50vw;
     height: 80vh;
 
 
@@ -34,7 +36,7 @@ h1{
 
     
 
-    #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #b0, #point {
+        .nums, #point {
         background-color: rgb(120, 222, 222);
 
         &:hover{
@@ -87,6 +89,11 @@ h1{
             grid-template-columns:repeat(5, 1fr);
             grid-template-rows:repeat(3, 1fr);
             
+
+            #api img ,#seintific img{
+                width: 40%;
+                height: 40%;
+            }
          }
     
     
@@ -198,3 +205,55 @@ h1{
     
 }
 
+.dark .nums{
+    background-color: rgb(57, 57, 150);
+    border-color: white ;
+    color: white;
+}
+
+.dark button{
+    background-color: rgb(91, 91, 91);
+    border-color: white ;
+    color: white;
+}
+
+.dark #name{
+    background-color: rgb(91, 91, 91);
+    border-color: white ;
+    color: white;
+}
+
+.dark #empty{
+    background-color: rgb(91, 91, 91);
+    border-color: white ;
+    color: white;
+}
+
+.dark #m-empty{
+    background-color: rgb(91, 91, 91);
+    border-color: white ;
+    color: white;
+}
+
+.dark #b-empty{
+    background-color: rgb(91, 91, 91);
+    border-color: white ;
+    color: white;
+}
+
+.dark #point{
+    background-color: rgb(143, 148, 164);
+    border-color: white ;
+    color: white;
+}
+
+.dark .calculator{
+    background-color: black;
+}
+.dark body{
+    background-color: black;
+}
+
+.dark h1{
+    color: white;
+}

@@ -10,12 +10,16 @@ h1 {
   padding: 50px;
 }
 
+body {
+  background-color: white;
+}
+
 .calculator {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: repeat(8, 1fr);
   margin: auto;
-  width: 60vw;
+  width: 50vw;
   height: 80vh;
 }
 .calculator button, .calculator #name, .calculator #empty, .calculator #m-empty, .calculator #b-empty {
@@ -23,10 +27,10 @@ h1 {
   border: 1px solid gray;
   background-color: rgb(153, 227, 202);
 }
-.calculator #b1, .calculator #b2, .calculator #b3, .calculator #b4, .calculator #b5, .calculator #b6, .calculator #b7, .calculator #b8, .calculator #b9, .calculator #b0, .calculator #point {
+.calculator .nums, .calculator #point {
   background-color: rgb(120, 222, 222);
 }
-.calculator #b1:hover, .calculator #b2:hover, .calculator #b3:hover, .calculator #b4:hover, .calculator #b5:hover, .calculator #b6:hover, .calculator #b7:hover, .calculator #b8:hover, .calculator #b9:hover, .calculator #b0:hover, .calculator #point:hover {
+.calculator .nums:hover, .calculator #point:hover {
   background-color: rgb(162, 195, 195);
 }
 .calculator button:hover {
@@ -57,6 +61,10 @@ h1 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(3, 1fr);
+}
+.calculator .main .middle #api img, .calculator .main .middle #seintific img {
+  width: 40%;
+  height: 40%;
 }
 .calculator .main .bottom {
   display: grid;
@@ -114,6 +122,59 @@ h1 {
   .calculator .main {
     height: 60%;
   }
+}
+.dark .nums {
+  background-color: rgb(57, 57, 150);
+  border-color: white;
+  color: white;
+}
+
+.dark button {
+  background-color: rgb(91, 91, 91);
+  border-color: white;
+  color: white;
+}
+
+.dark #name {
+  background-color: rgb(91, 91, 91);
+  border-color: white;
+  color: white;
+}
+
+.dark #empty {
+  background-color: rgb(91, 91, 91);
+  border-color: white;
+  color: white;
+}
+
+.dark #m-empty {
+  background-color: rgb(91, 91, 91);
+  border-color: white;
+  color: white;
+}
+
+.dark #b-empty {
+  background-color: rgb(91, 91, 91);
+  border-color: white;
+  color: white;
+}
+
+.dark #point {
+  background-color: rgb(143, 148, 164);
+  border-color: white;
+  color: white;
+}
+
+.dark .calculator {
+  background-color: black;
+}
+
+.dark body {
+  background-color: black;
+}
+
+.dark h1 {
+  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
