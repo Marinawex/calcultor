@@ -37,6 +37,7 @@ body {
   background-color: rgb(162, 195, 195);
 }
 .calculator .operation-log {
+  visibility: hidden;
   border: 1px solid gray;
   display: grid;
   grid-template-rows: 1fr 6fr;
@@ -85,6 +86,7 @@ body {
   grid-column: 2/5;
 }
 .calculator .sci {
+  visibility: hidden;
   background-color: bisque;
   display: grid;
   grid-template-columns: 1fr;

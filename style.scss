@@ -54,6 +54,7 @@ body{
 
     
     .operation-log{
+        display: none;
         border: 1px solid gray;
         display: grid;
         grid-template-rows: 1fr 6fr;
@@ -61,6 +62,8 @@ body{
 
         
     }
+
+    
     
     .main{
         border: 1px solid gray;
@@ -128,6 +131,7 @@ body{
     
     
     .sci{
+        visibility: hidden;
         background-color: bisque;
         display: grid;
         grid-template-columns: 1fr;
@@ -256,4 +260,8 @@ body{
 
 .dark h1{
     color: white;
+}
+
+.show .operation-log{
+    display: block;
 }

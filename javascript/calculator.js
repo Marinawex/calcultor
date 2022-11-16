@@ -9,7 +9,7 @@
  const digits = document.querySelectorAll('.nums');
 
  digits.forEach(digit => {
-    digit.addEventListener('click', ev =>{console.log('clikr')})
+    digit.addEventListener('click', ev =>{ev.stopPropagation; ev.preventDefault; console.log('clikr')})
 });
 
 const operators = document.querySelectorAll('.operator')
@@ -20,6 +20,8 @@ operators.forEach(operator => {
 
 const eq = document.querySelector('#eq')
 eq.addEventListener('click',ev =>{console.log('hory')})
+
+
 
 // const newDiv = document.createElement('div')
 // newDiv.style.width = '200px'
