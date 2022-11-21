@@ -11,6 +11,7 @@ var operators = document.querySelectorAll(".operator");
 var eq = document.querySelector("#eq");
 var reset = document.querySelector("#reset");
 var back = document.querySelector("#back");
+var display = document.querySelector('#res');
 //events
 digits.forEach(function (digit) {
     digit.addEventListener("click", function () {
@@ -24,6 +25,7 @@ digits.forEach(function (digit) {
             calc.secondOperand += digit.innerHTML;
             calc.curValue = calc.secondOperand;
         }
+        displayScreen();
     });
 });
 operators.forEach(function (operator) {
@@ -34,6 +36,19 @@ operators.forEach(function (operator) {
         if (CurIsOperator && calc.curValue) {
             calc.curValue = operator.innerHTML;
             calc.curOperator = operator.innerHTML;
+        }
+        displayScreen();
+    });
+});
+operators.forEach(function (operator) {
+    operator.addEventListener('click', function () {
+        if (calc.secondOperand) {
+            calculete();
+            calc.firstOperand = calc.result;
+            console.log(calc);
+            calc.curValue = operator.innerHTML;
+            calc.curOperator = operator.innerHTML;
+            calc.secondOperand = "";
         }
     });
 });
@@ -62,24 +77,29 @@ function canCalculate() {
         return true;
     }
 }
-//events functions
+function twoOperands() {
+    if (calc.firstOperand && calc.secondOperand) {
+        return true;
+    }
+}
 //calc functions
 function calculete() {
     if (canCalculate) {
         switch (calc.curOperator) {
             case "+":
-                sum(calc.firstOperand, calc.secondOperand);
+                calc.result = String(sum(calc.firstOperand, calc.secondOperand));
                 break;
             case "-":
-                sub(calc.firstOperand, calc.secondOperand);
+                calc.result = String(sub(calc.firstOperand, calc.secondOperand));
                 break;
             case "x":
-                multi(calc.firstOperand, calc.secondOperand);
+                calc.result = String(multi(calc.firstOperand, calc.secondOperand));
                 break;
             case "/":
-                divide(calc.firstOperand, calc.secondOperand);
+                calc.result = String(divide(calc.firstOperand, calc.secondOperand));
                 break;
         }
+        display.innerHTML = calc.result;
     }
 }
 function multi(num, num2) {
@@ -102,6 +122,7 @@ function resetButton() {
     calc.firstOperand = "";
     calc.secondOperand = "";
     calc.result = "";
+    clearDisplay();
 }
 function backButton() {
     if (calc.curValue.length > 1) {
@@ -120,4 +141,10 @@ function backButton() {
     else {
         calc.secondOperand = "";
     }
+}
+function displayScreen() {
+    display.innerHTML = calc.curValue;
+}
+function clearDisplay() {
+    display.innerHTML = "";
 }

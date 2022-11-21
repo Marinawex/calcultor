@@ -12,19 +12,23 @@ const operators = document.querySelectorAll(".operator");
 const eq = document.querySelector("#eq");
 const reset = document.querySelector("#reset");
 const back = document.querySelector("#back");
+const display = document.querySelector('#res')
 
 //events
 digits.forEach((digit) => {
   digit.addEventListener("click", () => {
     if (CurIsOperand && calc.curValue) {
       calc.curValue += digit.innerHTML;
+      
     } else {
       calc.curValue = digit.innerHTML;
+      
     }
     if (CurIsOperator && calc.firstOperand) {
       calc.secondOperand += digit.innerHTML;
       calc.curValue = calc.secondOperand;
     }
+    displayScreen()
   });
 });
 
@@ -37,8 +41,28 @@ operators.forEach((operator) => {
       calc.curValue = operator.innerHTML;
       calc.curOperator = operator.innerHTML;
     }
+    displayScreen()
+    
   });
 });
+operators.forEach((operator) => {
+    
+        operator.addEventListener('click', () => { 
+            if (calc.secondOperand){
+                calculete()
+                calc.firstOperand = calc.result;
+                console.log(calc)
+                calc.curValue = operator.innerHTML;
+                calc.curOperator = operator.innerHTML;
+                calc.secondOperand = ""; 
+            }
+       
+            
+        })
+    
+    
+})
+
 eq.addEventListener("click", () => calculete());
 reset.addEventListener("click", () => resetButton());
 back.addEventListener("click", () => backButton());
@@ -71,7 +95,11 @@ function canCalculate(){
     }
 }
 
-//events functions
+function twoOperands(){
+    if(calc.firstOperand && calc.secondOperand){
+        return true;
+    }
+}
 
 //calc functions
 
@@ -79,19 +107,20 @@ function calculete() {
     if(canCalculate){
         switch(calc.curOperator){
             case "+":
-                sum(calc.firstOperand,calc.secondOperand);
+                calc.result = String(sum(calc.firstOperand,calc.secondOperand));
                 break;
             case "-":
-                sub(calc.firstOperand,calc.secondOperand);
+                calc.result = String(sub(calc.firstOperand,calc.secondOperand));
                 break;
             case "x":
-                multi(calc.firstOperand,calc.secondOperand);
+                calc.result = String(multi(calc.firstOperand,calc.secondOperand));
                 break;
             case "/":
-                divide(calc.firstOperand,calc.secondOperand);
+                calc.result = String(divide(calc.firstOperand,calc.secondOperand));
                 break;
             
         }
+        display.innerHTML = calc.result;
 
     }
 }
@@ -120,6 +149,7 @@ function resetButton() {
   calc.firstOperand = "";
   calc.secondOperand = "";
   calc.result = "";
+  clearDisplay();
 }
 
 function backButton() {
@@ -138,3 +168,15 @@ function backButton() {
     calc.secondOperand = "";
   }
 }
+
+function displayScreen(){
+   
+    display.innerHTML = calc.curValue;
+   
+    
+}
+
+function clearDisplay(){
+    display.innerHTML = "";
+}
+
