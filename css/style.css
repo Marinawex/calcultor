@@ -37,7 +37,7 @@ body {
   background-color: rgb(162, 195, 195);
 }
 .calculator .operation-log {
-  visibility: hidden;
+  display: none;
   border: 1px solid gray;
   display: grid;
   grid-template-rows: 1fr 6fr;
@@ -86,7 +86,6 @@ body {
   grid-column: 2/5;
 }
 .calculator .sci {
-  visibility: hidden;
   background-color: bisque;
   display: grid;
   grid-template-columns: 1fr;
@@ -177,6 +176,27 @@ body {
 
 .dark h1 {
   color: white;
+  background-color: black;
+}
+
+.dark #res {
+  background-color: rgb(252, 252, 137);
+}
+
+.dark #mode {
+  background-color: rgb(205, 167, 96);
+}
+
+.dark .operation-log {
+  background-color: rgb(174, 174, 174);
+}
+
+.dark .sci {
+  background-color: rgb(174, 174, 174);
+}
+
+.dark body {
+  background-color: black;
 }
 
 /*# sourceMappingURL=style.css.map */

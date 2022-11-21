@@ -9,6 +9,8 @@
 h1{
     text-align: center;
     padding: 50px;
+    
+
 }
 
 body{
@@ -131,7 +133,7 @@ body{
     
     
     .sci{
-        visibility: hidden;
+    
         background-color: bisque;
         display: grid;
         grid-template-columns: 1fr;
@@ -253,6 +255,8 @@ body{
 
 .dark .calculator{
     background-color: black;
+    
+  
 }
 .dark body{
     background-color: black;
@@ -260,8 +264,25 @@ body{
 
 .dark h1{
     color: white;
+    background-color: black;
 }
 
-.show .operation-log{
-    display: block;
+.dark #res{
+    background-color: rgb(252, 252, 137);
+}
+
+.dark #mode{
+    background-color: rgb(205, 167, 96);
+}
+
+.dark .operation-log{
+    background-color: rgb(174, 174, 174);
+}
+
+.dark .sci{
+    background-color: rgb(174, 174, 174);
+}
+
+.dark body{
+    background-color: black;
 }

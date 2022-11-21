@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "target": "ES2020",
+    "lib": ["DOM", "ES2020"],
+    "watch": true
+  }
+}
