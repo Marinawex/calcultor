@@ -6,6 +6,8 @@ const calc = {
   result: "",
 };
 
+
+
 //buttons
 const digits = document.querySelectorAll(".nums");
 const operators = document.querySelectorAll(".operator");
@@ -45,23 +47,23 @@ operators.forEach((operator) => {
     
   });
 });
-operators.forEach((operator) => {
+// operators.forEach((operator) => {
     
-        operator.addEventListener('click', () => { 
-            if (calc.secondOperand){
-                calculete()
-                calc.firstOperand = calc.result;
-                console.log(calc)
-                calc.curValue = operator.innerHTML;
-                calc.curOperator = operator.innerHTML;
-                calc.secondOperand = ""; 
-            }
+//         operator.addEventListener('click', () => { 
+//             if (calc.secondOperand){
+//                 calculete()
+//                 calc.firstOperand = calc.result;
+//                 console.log(calc)
+//                 calc.curValue = operator.innerHTML;
+//                 calc.curOperator = operator.innerHTML;
+//                 calc.secondOperand = ""; 
+//             }
        
             
-        })
+//         })
     
     
-})
+// })
 
 eq.addEventListener("click", () => calculete());
 reset.addEventListener("click", () => resetButton());
@@ -179,4 +181,5 @@ function displayScreen(){
 function clearDisplay(){
     display.innerHTML = "";
 }
+
 

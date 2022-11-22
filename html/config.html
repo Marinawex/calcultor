@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="../index.html" method="get">
 
         <label for="background-color">Choose a background-color:</label>
         <select name="background-color" id="background-color">
@@ -22,17 +22,20 @@
         <label for="font family">Choose a font family:</label>
         <select name="font family" id="font family">
             <option value="serif">serif</option>
-            <option value="sans serif">sans serif</option>
-            <option value="cursive">cursive</option>
-            <option value="fantasy">fantasy</option>
-            <option value="nonospace">nonospace</option>
+            <option value="sans serif">Arial, Helvetica, sans-serif</option>
+            <option value="cursive">'Times New Roman', Times, serif</option>
+            <option value="fantasy">Verdana, Geneva, Tahoma, sans-serif</option>
+            <option value="nonospace">'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif</option>
         </select>
         <br>
     
         <label for="mode">Choose a mode:
-            <input type="radio" id="darkmode" value="dark" name="mode">
-            <input type="radio" id="lightmode" value="light" name="mode">
+            <input type="radio" id="darkmode" value="dark" name="mode">Dark mode
+            <input type="radio" id="lightmode" value="light" name="mode">Light mode
         </label>
+        </BR>
+
+        <button type="submit">submit</button>
         
     </form> 
 </body>
