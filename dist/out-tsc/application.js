@@ -1,16 +1,21 @@
-document.addEventListener("DOMContentLoaded", configSettings);
+// light button
 const mode = document.getElementById("mode");
 mode.addEventListener("click", () => {
     const el = document.body;
-    el.classList.toggle("dark");
+    el.classList.toggle("light");
 });
-const info = document.querySelector("#info");
-info.addEventListener("click", (e) => {
-    alert("Developer’s name:Marina\nCalculator’s version:1.0.0\nthis is a calculetor");
-});
+// info button
+// const content = fetch('../html/help.html').then(function response(res) {
+//   console.log(res.json)
+// } )
+const modalBody = document.querySelector(".modal-body");
+document.addEventListener("DOMContentLoaded", () => (modalBody.innerHTML = " contentForInfo.innerHTML"));
+//history button
 const historyBox = document.querySelector(".operation-log");
 const log = document.querySelector("#history");
 log.addEventListener("click", () => {
+    historyBox.style.visibility = "visible";
+    document.body.classList.toggle("ON");
     if (historyBox.style.display !== "block") {
         historyBox.style.display = "block";
     }
@@ -18,20 +23,30 @@ log.addEventListener("click", () => {
         historyBox.style.display = "none";
     }
 });
+//seintific button
 const sciBox = document.querySelector(".sci");
 const sciButton = document.querySelector("#seintific");
 sciButton.addEventListener("click", () => {
+    calc.seintificMode = true;
+    resetButton();
+    sciBox.style.visibility = "visible";
+    document.body.classList.toggle("sciMode");
     if (sciBox.style.display !== "block") {
         sciBox.style.display = "block";
     }
     else {
         sciBox.style.display = "none";
+        calc.seintificMode = false;
+        resetButton();
     }
 });
+//settings button
+document.addEventListener("DOMContentLoaded", configSettings);
 const settings = document.querySelector("#settings");
 settings.addEventListener("click", () => window.open("/html/config.html"));
 function configSettings() {
     const data = window.location.search;
+    console.log(data);
     let params = new URLSearchParams(data);
     const colors = params.get("background-color");
     const fonts = params.get("font-family");

@@ -10,10 +10,6 @@ h1 {
   padding: 50px;
 }
 
-body {
-  background-color: white;
-}
-
 .calculator {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -37,11 +33,12 @@ body {
   background-color: rgb(162, 195, 195);
 }
 .calculator .operation-log {
-  display: none;
+  visibility: hidden;
   border: 1px solid gray;
   display: grid;
   grid-template-rows: 1fr 6fr;
   background-color: bisque;
+  background-color: darkcyan;
 }
 .calculator .main {
   border: 1px solid gray;
@@ -86,6 +83,7 @@ body {
   grid-column: 2/5;
 }
 .calculator .sci {
+  visibility: hidden;
   background-color: bisque;
   display: grid;
   grid-template-columns: 1fr;
@@ -179,14 +177,6 @@ body {
   background-color: black;
 }
 
-.dark #res {
-  background-color: rgb(252, 252, 137);
-}
-
-.dark #mode {
-  background-color: rgb(205, 167, 96);
-}
-
 .dark .operation-log {
   background-color: rgb(174, 174, 174);
 }
@@ -195,8 +185,20 @@ body {
   background-color: rgb(174, 174, 174);
 }
 
-.dark body {
-  background-color: black;
+.light #res {
+  background-color: rgb(252, 252, 137);
+}
+
+.light #mode {
+  background-color: rgb(205, 167, 96);
+}
+
+.sciMode #seintific {
+  background-color: rgb(205, 167, 96);
+}
+
+.ON #history {
+  background-color: rgb(205, 167, 96);
 }
 
 /*# sourceMappingURL=style.css.map */
