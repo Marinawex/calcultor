@@ -6,7 +6,7 @@ const calc = {
     result: "",
     output: "",
     seintificMode: false,
-    haveDot: false,
+    haveDot: false, // should help me check if there is a dot in the number and disable the options to add another
 };
 //buttons
 const digits = document.querySelectorAll(".nums");
@@ -23,128 +23,124 @@ const root = document.querySelector("#root");
 const mod = document.querySelector("#mod");
 const pi = document.querySelector("#pi");
 //events
+powerOfTwo.addEventListener("click", () => {
+    if (!calc.curValue || CurIsOperator()) {
+        return;
+    }
+    else {
+        calc.curValue += "**2";
+        displayScreen();
+    }
+});
+squareRoot.addEventListener("click", () => {
+    if (!calc.curValue || CurIsOperator()) {
+        return;
+    }
+    else {
+        calc.result = eval("Math.sqrt(calc.curValue)");
+        displayScreen();
+    }
+});
+power.addEventListener("click", () => {
+    if (!calc.curValue || CurIsOperator()) {
+        return;
+    }
+    else {
+        calc.curValue += "**";
+        displayScreen();
+    }
+});
+root.addEventListener("click", () => {
+    if (!calc.curValue || CurIsOperator()) {
+        return;
+    }
+    else {
+        console.log("working on it");
+    }
+});
+mod.addEventListener("click", () => {
+    if (!calc.curValue || CurIsOperator()) {
+        return;
+    }
+    else {
+        calc.curValue += "%";
+        displayScreen();
+    }
+});
 digits.forEach((digit) => {
     digit.addEventListener("click", () => {
-        if (calc.firstOperand && calc.curOperator) {
-            calc.secondOperand += digit.innerHTML;
-        }
-        else if (calc.firstOperand) {
-            calc.firstOperand += digit.innerHTML;
-        }
-        else {
-            calc.firstOperand = digit.innerHTML;
-        }
-        if (calc.seintificMode) {
+        if (!calc.seintificMode) {
+            if (calc.firstOperand && calc.curOperator) {
+                calc.secondOperand += digit.innerHTML;
+            }
+            else if (calc.firstOperand) {
+                calc.firstOperand += digit.innerHTML;
+            }
+            else {
+                calc.firstOperand = digit.innerHTML;
+            }
             calc.curValue += digit.innerHTML;
         }
+        else {
+            calc.curValue += digit.innerHTML;
+            if (digit.id === "pi") {
+                calc.curValue = calc.curValue.replace("π", String(Math.PI));
+            }
+        }
         console.log(calc);
-        display.innerHTML = calc.firstOperand;
-        // if (CurIsOperand && calc.curValue) {
-        //   calc.curValue += digit.innerHTML;
-        //   console.log(calc);
-        // } else {
-        //   calc.curValue = digit.innerHTML;
-        //   console.log(calc);
-        // }
-        // if (CurIsOperator && calc.firstOperand) {
-        //   calc.secondOperand += digit.innerHTML;
-        //   console.log(calc);
-        //   calc.curValue = calc.secondOperand;
-        //   console.log(calc);
-        // }
-        // if (CurIsOperator && calc.firstOperand && calc.secondOperand){
-        //     calculete()
-        //     calc.firstOperand =calc.result;
-        // }
-        // displayScreen();
+        displayScreen();
     });
 });
 operators.forEach((operator) => {
     operator.addEventListener("click", () => {
-        if (!calc.firstOperand) {
-            return;
+        if (!calc.seintificMode) {
+            if (!calc.firstOperand) {
+                return;
+            }
+            else if (!calc.secondOperand) {
+                calc.curOperator = operator.innerHTML;
+            }
+            if (calc.curOperator && calc.secondOperand) {
+                calculete();
+                calc.firstOperand = calc.result;
+                calc.secondOperand = "";
+                calc.curOperator = operator.innerHTML;
+            }
+            if (CurIsOperator()) {
+                calc.curValue = calc.curValue.slice(0, -1);
+                calc.curValue += operator.innerHTML;
+                displayScreen();
+            }
+            else {
+                calc.curValue += operator.innerHTML;
+            }
+            console.log(calc);
         }
-        else if (!calc.secondOperand) {
-            calc.curOperator = operator.innerHTML;
+        else {
+            if (!calc.curValue) {
+                return;
+            }
+            if (CurIsOperator()) {
+                calc.curValue = calc.curValue.slice(0, -1);
+                calc.curValue += operator.innerHTML;
+                displayScreen();
+            }
+            else {
+                calc.curValue += operator.innerHTML;
+            }
         }
-        if (calc.curOperator && calc.secondOperand && !calc.seintificMode) {
-            calculete();
-            calc.firstOperand = calc.result;
-            calc.secondOperand = "";
-            calc.curOperator = operator.innerHTML;
-        }
-        else if (calc.seintificMode) {
-            calc.curOperator = operator.innerHTML;
-        }
-        if (calc.seintificMode) {
-            calc.curValue += operator.innerHTML;
-        }
-        console.log(calc);
-        display.innerHTML = calc.curOperator;
-        // if (!calc.curValue) {
-        //   return;
-        // }
-        // if (CurIsOperand && calc.curValue) {
-        //   calc.firstOperand = calc.curValue;
-        //   calc.curOperator = operator.innerHTML;
-        //   console.log(calc);
-        // }
-        // if (calc.curValue) {
-        //   calc.curValue = operator.innerHTML;
-        //   console.log(calc);
-        // }
-        // if (calc.secondOperand) {
-        //   calculete();
-        //   calc.firstOperand = calc.result;
-        //   calc.secondOperand = "";
-        //   calc.curValue = operator.innerHTML;
-        // }
-        // if (canCalculate) {
-        //     calculete()
-        //     calc.firstOperand = calc.result;
-        //     calc.secondOperand = "";
-        //     calc.curValue = operator.innerHTML;
-        //     calc.curOperator = operator.innerHTML;
-        //     console.log()
-        // }
-        // displayScreen();
+        displayScreen();
     });
 });
-// operators.forEach((operator) => {
-//         operator.addEventListener('click', () => {
-//             if (calc.secondOperand){
-//                 calculete()
-//                 calc.firstOperand = calc.result;
-//                 console.log(calc)
-//                 calc.curValue = operator.innerHTML;
-//                 calc.curOperator = operator.innerHTML;
-//                 calc.secondOperand = "";
-//             }
-//         })
-// })
 eq.addEventListener("click", evalButton);
 reset.addEventListener("click", resetButton);
 back.addEventListener("click", backButton);
 //helper functions
-function CurIsOperand() {
-    if (calc.curValue === "0" ||
-        calc.curValue === "1" ||
-        calc.curValue === "2" ||
-        calc.curValue === "3" ||
-        calc.curValue === "4" ||
-        calc.curValue === "5" ||
-        calc.curValue === "6" ||
-        calc.curValue === "7" ||
-        calc.curValue === "8" ||
-        calc.curValue === "9") {
-        return true;
-    }
-}
 function CurIsOperator() {
-    if (calc.curValue === "+" ||
-        calc.curValue === "-" ||
-        calc.curValue === "x" ||
-        calc.curValue === "/") {
+    if (calc.curValue.slice(-1) === "+" ||
+        calc.curValue.slice(-1) === "-" ||
+        calc.curValue.slice(-1) === "x" ||
+        calc.curValue.slice(-1) === "/") {
         return true;
     }
 }
@@ -153,9 +149,25 @@ function canCalculate() {
         return true;
     }
 }
+function displayScreen() {
+    display.innerHTML = calc.curValue;
+    if (calc.result) {
+        display.innerHTML = `=${calc.result}`;
+    }
+}
+function clearDisplay() {
+    display.innerHTML = "";
+}
 function logHistory() {
     const historyBox = document.querySelector("#display-log");
-    historyBox.innerHTML += `\n${calc.output}`;
+    if (calc.seintificMode) {
+        historyBox.innerHTML += calc.curValue;
+        historyBox.innerHTML += ` = ${calc.result}</br>`;
+        calc.output += ` = ${calc.result}`;
+    }
+    else {
+        historyBox.innerHTML += `${calc.output}</br>`;
+    }
 }
 function clearHistory() {
     const historyBox = document.querySelector("#display-log");
@@ -181,8 +193,14 @@ function calculete() {
         }
         calc.output += ` = ${calc.result}`;
         logHistory();
-        display.innerHTML = calc.result;
+        displayScreen();
     }
+}
+function sciCalculete() {
+    let ans = calc.curValue.replace("x", "*");
+    calc.result = eval(ans);
+    logHistory();
+    displayScreen();
 }
 function multi(num, num2) {
     return parseFloat(num) * parseFloat(num2);
@@ -198,14 +216,20 @@ function sub(num, num2) {
 }
 //buttons functions
 function evalButton() {
-    calculete();
-    calc.curValue = "";
+    if (!calc.seintificMode) {
+        calculete();
+    }
+    else {
+        sciCalculete();
+    }
+    displayScreen();
+    calc.curValue = String(calc.result);
     calc.curOperator = "";
-    calc.firstOperand = "";
+    calc.firstOperand = calc.result;
+    displayScreen();
     calc.secondOperand = "";
     calc.result = "";
     calc.output = "";
-    clearDisplay();
 }
 function resetButton() {
     calc.curValue = "";
@@ -218,26 +242,23 @@ function resetButton() {
     clearHistory();
 }
 function backButton() {
-    if (calc.curValue.length > 1) {
-        calc.curValue = calc.curValue.slice(0, -1);
+    if (!calc.seintificMode) {
+        if (calc.firstOperand.length > 1 && !calc.curOperator) {
+            calc.firstOperand = calc.firstOperand.slice(0, -1);
+        }
+        else if (!calc.curOperator) {
+            calc.firstOperand = "";
+        }
+        if (calc.curOperator && !calc.secondOperand) {
+            calc.curOperator = "";
+        }
+        if (calc.secondOperand.length > 1) {
+            calc.secondOperand = calc.secondOperand.slice(0, -1);
+        }
+        else {
+            calc.secondOperand = "";
+        }
     }
-    else {
-        calc.curValue = "";
-    }
-    //   if (CurIsOperator && calc.curOperator) {
-    //     calc.curOperator = "";
-    //     calc.curValue = "";
-    //   }
-    if (calc.secondOperand) {
-        calc.secondOperand = calc.secondOperand.slice(0, -1);
-    }
-    else {
-        calc.secondOperand = "";
-    }
-}
-function displayScreen() {
-    display.innerHTML = calc.secondOperand;
-}
-function clearDisplay() {
-    display.innerHTML = "";
+    calc.curValue = calc.curValue.slice(0, -1);
+    displayScreen();
 }

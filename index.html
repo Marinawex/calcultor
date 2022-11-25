@@ -21,7 +21,10 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        Developer’s name: Marina Lobanov<br />
+        Calculator’s version: 1.0.0 <br />
+        this is a calculetor
+      </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -38,7 +41,7 @@
 
     <div class="calculator">
       <div class="operation-log">
-        <div id="log">operation log</div>
+        <div id="log">Operation log<hr/></div>
         <div id="display-log"></div>
       </div>
 
@@ -129,7 +132,7 @@
               />
             </svg>
           </button>
-          <button id="reset" type="reset">reset</button>
+          <button id="reset" type="reset">C</button>
           <button id="divide" class="operator">/</button>
         </div>
 
@@ -164,18 +167,18 @@
 
       <div class="sci">
         <div class="top">
-          <div>scientific</div>
+          <div>Scientific</div>
           <div id="empty"></div>
         </div>
         <div class="middle">
-          <button id="x2">&#178;x</button>
-          <button id="S-root">&#178;&#8730;x</button>
-          <button id="power">&#696;X</button>
-          <button id="root">&#696 &#8730;</button>
-          <button id="mod">mod</button>
-          <button id="pi">&#960;</button>
+          <button id="x2" class="sciOperators">&#178;x</button>
+          <button id="S-root" class="sciOperators">&#178;&#8730; x</button>
+          <button id="power" class="sciOperators">&#696; X</button>
+          <button id="root" class="sciOperators">&#696 &#8730; x</button>
+          <button id="mod" class="sciOperators">mod</button>
+          <button id="pi" class="nums" class="sciOperators">&#960;</button>
         </div>
-        <button id="base2">base2</button>
+        <button id="base2" class="sciOperators">base2</button>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

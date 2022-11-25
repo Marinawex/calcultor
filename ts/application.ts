@@ -1,3 +1,6 @@
+
+
+
 // light button
 const mode = document.getElementById("mode");
 mode.addEventListener("click", () => {
@@ -5,17 +8,6 @@ mode.addEventListener("click", () => {
   el.classList.toggle("light");
 });
 
-// info button
-
-// const content = fetch('../html/help.html').then(function response(res) {
-//   console.log(res.json)
-// } )
-
-const modalBody = document.querySelector(".modal-body");
-document.addEventListener(
-  "DOMContentLoaded",
-  () => (modalBody.innerHTML = " contentForInfo.innerHTML")
-);
 
 //history button
 
