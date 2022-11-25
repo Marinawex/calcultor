@@ -52,7 +52,6 @@ settings.addEventListener("click", () => window.open("/html/config.html"));
 
 function configSettings() {
   const data = window.location.search;
-  console.log(data);
   let params = new URLSearchParams(data);
   const colors = params.get("background-color");
   const fonts = params.get("font-family");

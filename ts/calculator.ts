@@ -6,7 +6,7 @@ const calc = {
   result: "",
   output: "",
   seintificMode: false,
-  haveDot: false, // should help me check if there is a dot in the number and disable the options to add another
+  // haveDot: false, should help me check if there is a dot in the number and disable the options to add another
 };
 
 //buttons
@@ -87,7 +87,7 @@ digits.forEach((digit) => {
       }
     }
 
-    console.log(calc);
+ 
     displayScreen();
   });
 });
@@ -103,6 +103,8 @@ operators.forEach((operator) => {
       if (calc.curOperator && calc.secondOperand) {
         calculete();
         calc.firstOperand = calc.result;
+        calc.curValue = String(calc.result);
+        displayScreen()
         calc.secondOperand = "";
         calc.curOperator = operator.innerHTML;
       }
@@ -115,7 +117,7 @@ operators.forEach((operator) => {
         calc.curValue += operator.innerHTML;
       }
 
-      console.log(calc);
+      
     } else {
       if (!calc.curValue) {
         return;
@@ -160,6 +162,9 @@ function displayScreen(): void {
   display.innerHTML = calc.curValue;
   if (calc.result) {
     display.innerHTML = `=${calc.result}`;
+  }
+  if(calc.result && CurIsOperator() && (!calc.seintificMode)){
+    display.innerHTML = calc.curValue;
   }
 }
 
@@ -276,3 +281,5 @@ function backButton(): void {
   calc.curValue = calc.curValue.slice(0, -1);
   displayScreen();
 }
+
+
