@@ -3,19 +3,26 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-family:Arial, Helvetica, sans-serif
 }
 
 
 h1{
     text-align: center;
-    padding: 50px;
+    padding: 0.8em;
     
 
 }
 
-body{
-    background-color: white;
-}
+    
+
+
+
+    
+   
+
+    
+
 
 .calculator{
     display: grid;
@@ -24,14 +31,17 @@ body{
     margin: auto;
     width: 50vw;
     height: 80vh;
-
+    min-height: 50vh;
+   
+    
 
 
 
     button, #name, #empty, #m-empty,#b-empty{
         border-radius: 0%;
-        border: 1px solid gray;
-        background-color: rgb(153, 227, 202);
+        border: 1px solid rgba(128, 128, 128, 0.366);
+        background-color:#90b4ce;
+       
 
       
     }
@@ -39,8 +49,7 @@ body{
     
 
         .nums, #point {
-        background-color: rgb(120, 222, 222);
-
+        background-color:  #d2d2d1;
         &:hover{
             background-color: rgb(162, 195, 195);
         }
@@ -56,11 +65,14 @@ body{
 
     
     .operation-log{
-        display: none;
-        border: 1px solid gray;
+        visibility: hidden;
         display: grid;
         grid-template-rows: 1fr 6fr;
-        background-color: bisque;
+        background-color: #d2d2d1;
+        min-height: 20%;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px rgb(0 0 0 / 0.2);
 
         
     }
@@ -68,9 +80,14 @@ body{
     
     
     .main{
-        border: 1px solid gray;
+        border: 1px solid rgba(128, 128, 128, 0.366);
         display: grid;
         grid-template-rows: repeat(2,2fr) 1fr;
+        border-radius: 5px;
+        box-shadow: 0 10px 10px  rgb(0 0 0 / 0.2);
+        min-width: 30vw;
+        min-height: 50vh;
+        
         
     
     
@@ -83,7 +100,8 @@ body{
     
             #name, #res{
                 text-align: center;
-                border: 1px solid gray;
+                border: 1px solid rgba(128, 128, 128, 0.366);
+               
             }
             
             
@@ -113,7 +131,7 @@ body{
          #empty{
              grid-row: 1/3;
              grid-column: 1/2;
-             border: 1px solid gray;
+             border: 1px solid rgba(128, 128, 128, 0.366);
          }
          #eq{
             grid-row: 1/3;
@@ -122,7 +140,7 @@ body{
             
          }
          #b-empty{
-            border: 1px solid gray;
+            border: 1px solid #80808072;
             grid-column: 2/5;
             
     
@@ -133,14 +151,19 @@ body{
     
     
     .sci{
-    
-        background-color: bisque;
+        visibility: hidden;
+        text-align: center;
+        background-color:rgb(162, 195, 195);
         display: grid;
+        min-height: 20%;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(2,2fr) 1fr;
         grid-template-areas:"top"
                             "middle"
                             "bottom";
+
+                            border-radius: 5px;
+                            box-shadow: 0 10px 10px rgb(0 0 0 / 0.2);
         
         
     
@@ -148,8 +171,9 @@ body{
     
         .top{
             
-            border: 1px solid gray;
+            
             grid-area:top ;
+            min-height: 25%;
 
             #empty{
                 grid-row: 2/4;
@@ -162,14 +186,31 @@ body{
             grid-area: middle;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            background-color: bisque;
+            min-height: 40%;
             
+            
+        }
+
+        .sciOperators{
+            background-color:rgb(162, 195, 195);
+
+            &:hover{
+                background-color:#d2d2d1;
+            }
         }
 
         #base2{
             grid-area: bottom;
+            min-height: fit-content;
+            border:transparent;
             
 
+        }
+        #pi{
+            background-color: rgb(162, 195, 195);
+            &:hover{
+                background-color:#d2d2d1;
+            }
         }
     
         
@@ -200,10 +241,17 @@ body{
             height: 60%;
         }
 
+        #res{
+            display: flex;
+            flex-direction: column;
+        }
+
         
     }
 
-
+.lightmode body{
+    background-color: white;
+}
     
 
     
@@ -267,13 +315,9 @@ body{
     background-color: black;
 }
 
-.dark #res{
-    background-color: rgb(252, 252, 137);
-}
 
-.dark #mode{
-    background-color: rgb(205, 167, 96);
-}
+
+
 
 .dark .operation-log{
     background-color: rgb(174, 174, 174);
@@ -283,6 +327,20 @@ body{
     background-color: rgb(174, 174, 174);
 }
 
-.dark body{
-    background-color: black;
+
+.light #res{
+    background-color: rgb(252, 252, 137);
+}
+
+.light #mode{
+    background-color: rgb(205, 167, 96);
+}
+
+
+.sciMode #seintific{
+    background-color: rgb(205, 167, 96);
+}
+
+.ON #history{
+    background-color: rgb(205, 167, 96);
 }

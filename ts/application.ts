@@ -1,32 +1,69 @@
-const mode = document.getElementById('mode');
-mode.addEventListener('click',()=>{const el = document.body; el.classList.toggle('dark');});
-
-const info = document.querySelector('#info');
-info.addEventListener('click',e =>{alert('Developer’s name:Marina\nCalculator’s version:1.0.0\nthis is a calculetor');});
 
 
-const historyBox: HTMLElement = document.querySelector('.operation-log');
 
-const log = document.querySelector('#history');
-log.addEventListener('click', () =>{
-    if (historyBox.style.display !== 'block'){
-        historyBox.style.display = 'block';
-    } else {
-        historyBox.style.display = 'none';
-    }
-    
+// light button
+const mode = document.getElementById("mode");
+mode.addEventListener("click", () => {
+  const el = document.body;
+  el.classList.toggle("light");
 });
 
-const sciBox: HTMLElement = document.querySelector('.sci');
 
-const sciButton: Element = document.querySelector('#seintific');
-sciButton.addEventListener('click', () =>{
-    if (sciBox.style.display !== 'block'){
-        sciBox.style.display = 'block';
-    } else {
-        sciBox.style.display = 'none';
-    }
-    
+//history button
+
+const historyBox: HTMLElement = document.querySelector(".operation-log");
+
+const log = document.querySelector("#history");
+log.addEventListener("click", () => {
+  historyBox.style.visibility = "visible";
+  document.body.classList.toggle("ON");
+  if (historyBox.style.display !== "block") {
+    historyBox.style.display = "block";
+  } else {
+    historyBox.style.display = "none";
+  }
+});
+
+//seintific button
+
+const sciBox: HTMLElement = document.querySelector(".sci");
+
+const sciButton: Element = document.querySelector("#seintific");
+sciButton.addEventListener("click", () => {
+  calc.seintificMode = true;
+  resetButton();
+  sciBox.style.visibility = "visible";
+  document.body.classList.toggle("sciMode");
+  if (sciBox.style.display !== "block") {
+    sciBox.style.display = "block";
+  } else {
+    sciBox.style.display = "none";
+    calc.seintificMode = false;
+    resetButton();
+  }
+});
+
+//settings button
+
+document.addEventListener("DOMContentLoaded", configSettings);
+
+const settings = document.querySelector("#settings");
+settings.addEventListener("click", () => window.open("/html/config.html"));
+
+function configSettings() {
+  const data = window.location.search;
+  let params = new URLSearchParams(data);
+  const colors = params.get("background-color");
+  const fonts = params.get("font-family");
+  const mode = params.get("mode");
+  if (colors) {
+    document.body.style.background = colors;
+  }
+  if (fonts) {
+    document.body.style.fontFamily = fonts;
+  }
+  if (mode === "dark") {
+    let element: any = document.body;
+    element.classList.toggle("dark");
+  }
 }
-)
-
